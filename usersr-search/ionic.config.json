@@ -1,0 +1,7 @@
+{
+  "name": "usersr-search",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
