@@ -1,17 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header translucent>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title>Card</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content fullscreen *ngFor="let user of users">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{user.login}}</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
+  </ion-content> -->
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+  
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Card</ion-title>
+      </ion-toolbar>
+    </ion-header>,
+    <ion-content fullscreen>
+      <ion-card *ngFor="let user of users">
+        <ion-card-header>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img [src]="user.avatar_url">
+            </ion-avatar>
+            <ion-label>{{user.login}}</ion-label>
+          </ion-item>
+        </ion-card-header>
+      </ion-card>
+    </ion-content>

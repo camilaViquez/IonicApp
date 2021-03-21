@@ -21,14 +21,10 @@ export class UsersEffects {
             mergeMap(
                 () => this.userService.getUsers()
                 .pipe(
+                    tap((val) => {console.log("val: ", val)}),
                     map(usr => userActions.loadUsersSuccess({ users: usr }))
                 )
             )
         )
-
     );
-
-
-
-
 }
