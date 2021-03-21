@@ -26,8 +26,6 @@ const _userReducer = createReducer(usersInitialState,
          loading: false,
          loaded: true,
          users: [...users]
-
-
      }),
      on(loadUsersUnsuccess, (state, { payload }) => {
          ...state,
