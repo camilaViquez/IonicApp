@@ -7,7 +7,7 @@ export interface AppState {
 }
 
 
-// export const appReducer: ActionReducerMap<AppState> = {
-//     //users: reducers.usersReducer,
+export const appReducers: ActionReducerMap<AppState> = {
+    users: reducers.usersReducer,
 
-// }
+}

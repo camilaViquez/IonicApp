@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
-import { loadUsers } from 'src/app/store/actions';
+import { loadUsers, loadUsersSuccess, loadUsersUnsuccess } from '../actions';
 
 export interface UsersState {
     users: User[],
@@ -18,23 +18,25 @@ export const usersInitialState: UsersState = {
 
 }
 
-const _userReducer = createReducer(usersInitialState,
+const _usersReducer = createReducer(usersInitialState,
      on(loadUsers, state => ({...state, loading: true})),
      
-     on(loadUserSuccess), (state, { users }) => ({
+     on(loadUsersSuccess, (state, { users }) => ({
          ...state,
          loading: false,
          loaded: true,
          users: [...users]
-     }),
-     on(loadUsersUnsuccess, (state, { payload }) => {
+     })),
+     on(loadUsersUnsuccess, (state, { payload }) => ({
          ...state,
          loading: false,
          loaded: false,
          error: payload
-     })
+     }))
 );
 
-export function userReducer(state, action) {
-    return _userReducer(state, action);
+
+
+export function usersReducer(state, action) {
+    return _usersReducer(state, action);
 }
