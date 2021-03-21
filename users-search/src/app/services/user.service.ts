@@ -8,37 +8,22 @@ import { User } from '../model/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'https://api.github.com/users';
+  private url = 'https://api.github.com';
 
 
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get<User[]>(this.url);
+    return this.http.get<User[]>(`${this.url}/users`);
+  }
+
+  getSingleUser(userName: string) {
+    return this.http.get<User>(`${this.url}/users/${userName}`);
   }
 
 }
 
 
-
-// getUsers() {
-//   // let request;
-//   // this.http.get(this.url).subscribe((resp) => {
-//   //   request = resp;
-
-//   // })
-//   // return request;
-
-  
-//   //return this.http.get(this.url);
-//   const a = this.http.get(this.url).pipe(map(resp => resp['data']));
-//   console.log("A: ", a)
-
-//   const b = this.http.get(this.url);
-//   console.log("B: ", b)
-
-//   return this.http.get(this.url).pipe(map(resp => resp['data']));
-// }
 
 
 

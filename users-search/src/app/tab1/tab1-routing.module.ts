@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
-  }
+  },
+
 ];
 
 @NgModule({
@@ -14,3 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class Tab1PageRoutingModule {}
+

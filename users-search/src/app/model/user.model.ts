@@ -17,6 +17,12 @@ export class User {
        public events_url: string,
        public received_events_url: string,
        public type: string,
-       public site_admin: boolean
+       public site_admin: boolean,
+       public name: string,
+       public bio: string, 
+       public company: string,
+       public blog: string,
+       public location: string,
+       public public_repos: number,
     ) {}  
 }

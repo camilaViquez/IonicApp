@@ -1,12 +1,13 @@
+
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType} from '@ngrx/effects';
-import * as userActions from '../actions';
+import * as singleUserActions from '../actions/single-user.actions';
 import { UserService } from 'src/app/services/user.service';
 import { mergeMap, map, tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
 
 @Injectable()
-export class UsersEffects {
+export class SingleUsersEffects {
 
     constructor(
         //Observable listening actions
@@ -15,15 +16,20 @@ export class UsersEffects {
     ){}
 
 
-    loadUsers$ = createEffect(
-        () => this.actions$.pipe(
-            ofType( userActions.loadUsers ),
+    loadSingleUser$ = createEffect(
+        ():any => {
+            this.actions$.pipe(
+            ofType( singleUserActions.loadSingleUserByName),
             mergeMap(
-                () => this.userService.getUsers()
+                (action) => this.userService.getSingleUser(action.userName)
                 .pipe(
-                    map(users => userActions.loadUsersSuccess({ usersList: users }))
+                    map(singleUser => singleUserActions.loadSingleUserSuccess({ singleUser }))
                 )
-            )
-        )
-    );   
+            ))
+        }
+    );
+
 }
+
+
+    

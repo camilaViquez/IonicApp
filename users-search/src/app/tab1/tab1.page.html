@@ -7,9 +7,8 @@
   
 <ion-content fullscreen>     
   <ion-searchbar></ion-searchbar>
-  
-  <ion-item *ngFor="let user of users" >
-    <ion-avatar slot="start">
+  <ion-item *ngFor="let user of users">
+    <ion-avatar slot="start" (click)=onClick(user.login)>
       <img [src]="user.avatar_url">
     </ion-avatar>
     <ion-label>{{user.login}}</ion-label>

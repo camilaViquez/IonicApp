@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppState } from '../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { User } from '../model/user.model';
 import { loadUsers } from '../store/actions';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +13,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 export class Tab1Page implements OnInit{
   users: User [] = [];
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
 
   }
 
@@ -25,5 +25,8 @@ export class Tab1Page implements OnInit{
   }
 
 
+  onClick(userName: string) {
+    this.router.navigate([`tabs/tab2/${userName}`]);
+  }
 
 }
