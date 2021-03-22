@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-  users: User [] = [];
+  usersList: User [] = [];
 
   constructor(private store: Store<AppState>, private router: Router) {
 
@@ -19,7 +19,9 @@ export class Tab1Page implements OnInit{
 
   ngOnInit(): void {
     this.store.select('users').subscribe(({users}) => {
-      this.users = users;
+
+      console.log(users)
+      this.usersList = users;
     })
     this.store.dispatch( loadUsers() );
   }

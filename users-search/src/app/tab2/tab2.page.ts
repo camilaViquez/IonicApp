@@ -22,10 +22,10 @@ export class Tab2Page implements OnInit{
       this.userName = res.userName; 
     })
   }
-
   ngOnInit(): void {
     this.store.select('singleUser').subscribe(({user}) => {
       this.singleUser = user;
+      console.log(this.singleUser)
     })
     this.store.dispatch( loadSingleUserByName({ userName: this.userName }));    
   }

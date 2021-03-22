@@ -14,20 +14,19 @@ export class SingleUsersEffects {
         private actions$: Actions,
         private userService: UserService
     ){}
-
-
-    loadSingleUser$ = createEffect(
-        ():any => {
-            this.actions$.pipe(
-            ofType( singleUserActions.loadSingleUserByName),
-            mergeMap(
-                (action) => this.userService.getSingleUser(action.userName)
-                .pipe(
-                    map(singleUser => singleUserActions.loadSingleUserSuccess({ singleUser }))
+loadSingleUser$ :any = createEffect(
+    ():any => 
+    this.actions$.pipe(
+        ofType(singleUserActions.loadSingleUserByName),
+        mergeMap((action) => 
+                this.userService.getSingleUser(action.userName).pipe(
+                    map(
+                        (user) => singleUserActions.loadSingleUserSuccess({singleUser:user})
+                    )
                 )
-            ))
-        }
-    );
+        )
+    )
+)
 
 }
 
