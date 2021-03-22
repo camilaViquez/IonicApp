@@ -1,34 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      User Details
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-
-<!-- TODO
-HACER UN CARD CON LA INFO
-LINK PARA EL BLOG
- -->
-
- <ion-card>
-  <img [src]="singleUser.avatar_url" />
-  <ion-card-header>
-    <ion-card-subtitle>Destination</ion-card-subtitle>
-    <ion-card-title>Madison, WI</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-  </ion-card-content>
-</ion-card>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+    <img [src]="singleUser.avatar_url" />
+    <ion-card-header>
+      <ion-card-title>{{singleUser.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>Bio</h1>
+      <p>{{singleUser.bio}}</p>
+      <h1>Location</h1>
+      <p>{{singleUser.location}}</p>
+      <h1>Blog</h1>
+      <p>{{singleUser.blog}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
