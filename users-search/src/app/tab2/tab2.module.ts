@@ -14,6 +14,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { appReducers } from '../store/app.reducer';
 import { EffectsArray } from '../store/effects';
 import { environment } from 'src/environments/environment';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { environment } from 'src/environments/environment';
     logOnly: environment.production, // Restrict extension to log-only mode
   }),
   ],
+  providers: [InAppBrowser ],
   declarations: [Tab2Page]
 })
 export class Tab2PageModule {}

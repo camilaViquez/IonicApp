@@ -13,19 +13,17 @@ import { Router } from '@angular/router';
 export class Tab1Page implements OnInit{
   usersList: User [] = [];
 
-
-
+since: number = 0;
+pagination : number = 46;
   constructor(private store: Store<AppState>, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.store.select('users').subscribe(({users}) => {
-
-      console.log(users)
       this.usersList = users;
     })
-    this.store.dispatch( loadUsers() );
+    this.store.dispatch( loadUsers({since: this.since}) );
   }
 
   onClick(userName: string) {
@@ -34,6 +32,17 @@ export class Tab1Page implements OnInit{
 
   checkRepos(repoNumber: number){
     return repoNumber >= 2 ? true : false;
+  }
+
+  loadData(event) {
+    this.since+=this.pagination;
+    setTimeout(() => {
+      this.store.select('users').subscribe(({users}) => 
+      this.usersList = users
+      )
+      event.target.complete();
+    }, 500);
+    this.store.dispatch( loadUsers({since: this.since}) );
   }
 
 }

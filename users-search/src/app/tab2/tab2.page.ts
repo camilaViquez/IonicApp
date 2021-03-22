@@ -3,8 +3,9 @@ import { User } from '../model/user.model';
 import { AppState } from '../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { onInitEffects } from '@ngrx/effects/src/lifecycle_hooks';
-import { loadSingleUserSuccess, loadSingleUserByName } from '../store/actions';
+import {  loadSingleUserByName } from '../store/actions';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 @Component({
   selector: 'app-tab2',
@@ -17,13 +18,13 @@ export class Tab2Page implements OnInit{
   singleUser: User = null;
   userName: string;
 
-  constructor(private store: Store<AppState>, private activeRoute: ActivatedRoute) {
+  constructor(private store: Store<AppState>, private activeRoute: ActivatedRoute,
+    private inAppBrowser: InAppBrowser) {
     this.activeRoute.params.subscribe((res)=> {
       this.userName = res.userName; 
     })
   }
   ngOnInit(): void {
-    this.store.dispatch( loadSingleUserByName({ userName: null })); 
     this.store.select('singleUser').subscribe(({user}) => {
       this.singleUser = user;
       console.log(this.singleUser)
@@ -37,5 +38,10 @@ export class Tab2Page implements OnInit{
       console.log(this.singleUser)
     })
     this.store.dispatch( loadSingleUserByName({ userName: word }));    
+  }
+
+
+   openUrl(websiteUrl:string){
+     this.inAppBrowser.create( websiteUrl);
   }
 }

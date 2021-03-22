@@ -19,7 +19,7 @@ export class UsersEffects {
         ():any => this.actions$.pipe(
             ofType( userActions.loadUsers ),
             mergeMap(
-                () => this.userService.getUsers()
+                (action) => this.userService.getUsers(action.since)
                 .pipe(
                     map(users => userActions.loadUsersSuccess({ usersList: users }))
                     ,catchError((err) =>of( userActions.loadUsersUnsuccess({payload:err })))

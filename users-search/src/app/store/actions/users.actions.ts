@@ -2,7 +2,9 @@ import { createAction, props } from '@ngrx/store'
 import { User } from 'src/app/model/user.model';
 
 export const loadUsers = createAction(
-    '[Users] loadUsers');
+    '[Users] loadUsers',
+    props<{ since: number }>(),
+    );
 export const loadUsersSuccess = createAction(
     '[Users] loadUsersSuccess',
      props<{ usersList: User[] }>());

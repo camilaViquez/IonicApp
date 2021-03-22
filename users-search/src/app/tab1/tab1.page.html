@@ -6,8 +6,8 @@
 </ion-header>
   
 <ion-content fullscreen>     
-  <ion-item *ngFor="let user of usersList">
-    <ion-avatar slot="start" (click)=onClick(user.login)>
+  <ion-item *ngFor="let user of usersList" (click)=onClick(user.login)>
+    <ion-avatar slot="start" >
       <img [src]="user.avatar_url">
       
     </ion-avatar>
@@ -15,4 +15,10 @@
       <p [ngClass] = "checkRepos(user.public_repos) ? 'redLabel' : 'blackLabel'">{{user.login}}</p>
     </ion-label>
   </ion-item> 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

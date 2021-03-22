@@ -10,18 +10,35 @@
   <ion-searchbar #searchWord (ionChange)= "onChangeFilter(searchWord.value)"></ion-searchbar>
 
   <ion-card>
-    <img [src]="singleUser.avatar_url" />
+    <img *ngIf="singleUser.avatar_url" [src]="singleUser.avatar_url" />
     <ion-card-header>
-      <ion-card-title>{{singleUser.name}}</ion-card-title>
+      <ion-card-title *ngIf="singleUser.name">{{singleUser.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      
-      <h1>Bio</h1>
-      <p>{{singleUser.bio}}</p>
-      <h1>Location</h1>
-      <p>{{singleUser.location}}</p>
-      <h1>Blog</h1>
-      <p>{{singleUser.blog}}</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngIf="singleUser.bio" >
+            <h1>Bio</h1>
+            <p>{{singleUser.bio}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngIf="singleUser.location" >
+            <h1>Location</h1>
+          </ion-col>
+          <ion-col>
+            <p>{{singleUser.location}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngIf="singleUser.blog" >
+            <h1>Website:</h1>
+          </ion-col>
+          <ion-col>
+            <p (click)="openUrl(singleUser.blog)" >{{singleUser.blog}}</p>
+          </ion-col>
+        </ion-row>
+        </ion-grid>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.get<User[]>(`${this.url}/users`);
+  getUsers(since:number) {
+    return since === 0 ? this.http.get<User[]>(`${this.url}/users`) : this.http.get<User[]>(`${this.url}/users?since=${since}`);
   }
 
   getSingleUser(userName: string) {

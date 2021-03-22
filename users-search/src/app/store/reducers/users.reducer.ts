@@ -19,13 +19,13 @@ export const usersInitialState: UsersState = {
 }
 
 const _usersReducer = createReducer(usersInitialState,
-     on(loadUsers, state => ({...state, loading: true})),
+     on(loadUsers, (state, {since}) => ({...state, loading: true, since: since})),
           
      on(loadUsersSuccess, (state, { usersList }) => ({
          ...state,
          loading: false,
          loaded: true,
-         users: [...usersList]
+         users: state.users.concat(...usersList)
      })),
      on(loadUsersUnsuccess, (state, { payload }) => ({
          ...state,
