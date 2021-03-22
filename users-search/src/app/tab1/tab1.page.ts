@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppState } from '../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { User } from '../model/user.model';
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class Tab1Page implements OnInit{
   usersList: User [] = [];
 
+
+
   constructor(private store: Store<AppState>, private router: Router) {
 
   }
@@ -26,9 +28,12 @@ export class Tab1Page implements OnInit{
     this.store.dispatch( loadUsers() );
   }
 
-
   onClick(userName: string) {
     this.router.navigate([`tabs/tab2/${userName}`]);
+  }
+
+  checkRepos(repoNumber: number){
+    return repoNumber >= 2 ? true : false;
   }
 
 }

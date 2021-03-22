@@ -7,12 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-searchbar #searchWord (ionChange)= "onChangeFilter(searchWord.value)"></ion-searchbar>
+
   <ion-card>
     <img [src]="singleUser.avatar_url" />
     <ion-card-header>
       <ion-card-title>{{singleUser.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      
       <h1>Bio</h1>
       <p>{{singleUser.bio}}</p>
       <h1>Location</h1>
