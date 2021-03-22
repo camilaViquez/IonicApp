@@ -31,6 +31,14 @@
           </ion-col>
         </ion-row>
         <ion-row>
+          <ion-col *ngIf="singleUser.company" >
+            <h1>Company</h1>
+          </ion-col>
+          <ion-col>
+            <p>{{singleUser.company}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col *ngIf="singleUser.blog" >
             <h1>Website:</h1>
           </ion-col>

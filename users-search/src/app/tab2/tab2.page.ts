@@ -27,7 +27,6 @@ export class Tab2Page implements OnInit{
   ngOnInit(): void {
     this.store.select('singleUser').subscribe(({user}) => {
       this.singleUser = user;
-      console.log(this.singleUser)
     })
     this.store.dispatch( loadSingleUserByName({ userName: this.userName }));    
   }
@@ -35,7 +34,6 @@ export class Tab2Page implements OnInit{
   onChangeFilter(word: string) {
     this.store.select('singleUser').subscribe(({user}) => {
       this.singleUser = user;
-      console.log(this.singleUser)
     })
     this.store.dispatch( loadSingleUserByName({ userName: word }));    
   }
